@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from django.contrib.messages import constants as messages
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,8 +25,9 @@ SECRET_KEY = 'g%fw7f3yuzj&kk$q8!+ycikp(x!_f7gg#0l7ybuocp8tc($l_3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS =['*'] 
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -40,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'blog.apps.BlogConfig',
+    'django.contrib.humanize',
+    'ckeditor',
+    
 ]
 
 MIDDLEWARE = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'iCoder.urls'
+
 
 TEMPLATES = [
     {
@@ -125,3 +130,9 @@ STATIC_URL = '/static/'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,  "static"),
+]
